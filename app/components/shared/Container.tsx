@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 interface IContainerProps {
 	children: React.ReactNode;
