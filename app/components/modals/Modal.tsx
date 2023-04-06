@@ -16,10 +16,10 @@ interface IModalProps {
   body?: React.ReactElement;
   footer?: React.ReactElement;
   disabled?: boolean;
-  secondaryLabel?: string;
+  secondaryActionLabel?: string;
 }
 
-const Modal = ({onClose, onSubmit, actionLabel, body, disabled, footer, isOpen, secondaryAction, secondaryLabel, title}: IModalProps) => {
+const Modal = ({onClose, onSubmit, actionLabel, body, disabled, footer, isOpen, secondaryAction, secondaryActionLabel, title}: IModalProps) => {
 	const [showModal, setShowModal] = useState(isOpen);
 
 	useEffect(() => {
@@ -77,8 +77,14 @@ const Modal = ({onClose, onSubmit, actionLabel, body, disabled, footer, isOpen, 
 							{/* Footer */}
 							<div className='flex flex-col gap-2 p-6'>
 								<div className='flex items-center gap-4 w-full'>
-									<Button icon={IoMdClose} label="My button"/>
+									{
+										secondaryAction && secondaryActionLabel ? (
+											<Button outline disabled={disabled} label={secondaryActionLabel} onClick={handleSecondaryAction} icon={IoMdClose} />
+										) : null
+									}
+									<Button disabled={disabled} label={actionLabel} onClick={handleSubmit} />
 								</div>
+								{footer}
 							</div>
 						</div>
 					</div>
