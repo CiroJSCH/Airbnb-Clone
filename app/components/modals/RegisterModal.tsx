@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
@@ -37,7 +37,7 @@ const RegisterModal = () => {
 			.then(() => {
 				registerModal.onClose();
 			})
-			.catch((error) => {
+			.catch(() => {
 				toast.error('Something went wrong');
 			})
 			.finally(() => {
