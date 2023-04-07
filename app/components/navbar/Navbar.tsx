@@ -12,7 +12,6 @@ interface INavbarProps {
 }
 
 const Navbar = ({currentUser}: INavbarProps) => {
-	console.log(currentUser);
 	return (
 		<nav className='fixed w-full bg-white z-10 shadow-sm'>
 			<div className='py-4 border-b'>

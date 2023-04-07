@@ -7,7 +7,6 @@ import toast from 'react-hot-toast';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
 
 import useRegisterModal from '@/hooks/useRegisterModal';
 import useLoginModal from '@/hooks/useLoginModal';
@@ -85,13 +84,13 @@ const LoginModal = () => {
 				outline
 				label="Continue with Google"
 				icon={FcGoogle}
-				onClick={() => console.log('Logeando con google')}
+				onClick={() => signIn('google')}
 			/>
 			<Button
 				outline
 				label="Continue with GitHub"
 				icon={AiFillGithub}
-				onClick={() => console.log('Logeando con github')}
+				onClick={() => signIn('github')}
 			/>
 			<div className="mt-4 text-center font-light text-neutral-500">
 				<div className="flex justify-center flex-row items-center gap-2">
