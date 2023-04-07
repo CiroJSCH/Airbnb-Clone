@@ -6,6 +6,7 @@ import Container from '@/components/shared/Container';
 import UserMenu from './UserMenu';
 import Search from './Search';
 import Logo from './Logo';
+import Categories from './Categories';
 
 interface INavbarProps {
 	currentUser?: SafeUser | null;
@@ -23,6 +24,7 @@ const Navbar = ({currentUser}: INavbarProps) => {
 					</div>
 				</Container>
 			</div>
+			<Categories />
 		</nav>
 	);
 };
