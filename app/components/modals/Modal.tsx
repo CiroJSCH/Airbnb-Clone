@@ -79,7 +79,7 @@ const Modal = ({onClose, onSubmit, actionLabel, body, disabled, footer, isOpen, 
 								<div className='flex items-center gap-4 w-full'>
 									{
 										secondaryAction && secondaryActionLabel ? (
-											<Button outline disabled={disabled} label={secondaryActionLabel} onClick={handleSecondaryAction} icon={IoMdClose} />
+											<Button outline disabled={disabled} label={secondaryActionLabel} onClick={handleSecondaryAction} />
 										) : null
 									}
 									<Button disabled={disabled} label={actionLabel} onClick={handleSubmit} />
