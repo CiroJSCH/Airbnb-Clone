@@ -54,13 +54,10 @@ const LoginModal = () => {
 			});
 	};
 
-	const toggleModal = useCallback(
-		() => {
-			loginModal.onClose;
-			registerModal.onOpen;
-		},
-		[loginModal, registerModal],
-	);
+	const toggleModal = useCallback(() => {
+		loginModal.onClose();
+		registerModal.onOpen();
+	}, [registerModal, loginModal]);
 	
 	const bodyContent = (
 		<div className="flex flex-col gap-4">
