@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
@@ -54,6 +54,14 @@ const LoginModal = () => {
 			});
 	};
 
+	const toggleModal = useCallback(
+		() => {
+			loginModal.onClose;
+			registerModal.onOpen;
+		},
+		[loginModal, registerModal],
+	);
+	
 	const bodyContent = (
 		<div className="flex flex-col gap-4">
 			<Heading title="Welcome back" subtitle="Login to your account!" />
@@ -95,7 +103,7 @@ const LoginModal = () => {
 			<div className="mt-4 text-center font-light text-neutral-500">
 				<div className="flex justify-center flex-row items-center gap-2">
 					<p>
-            Already have an account?<span onClick={registerModal.onClose} className='ml-1 text-neutral-800 cursor-pointer hover:underline'>Log in</span>
+            First time using Airbnb?<span onClick={toggleModal} className='ml-1 text-neutral-800 cursor-pointer hover:underline'>Register</span>
 					</p>
 				</div>
 			</div>
