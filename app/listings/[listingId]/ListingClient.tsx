@@ -7,9 +7,8 @@ import { Range } from 'react-date-range';
 import { useRouter } from 'next/navigation';
 import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
 import axios from 'axios';
-import { Reservation } from '@prisma/client';
 
-import { SafeListing, SafeUser } from '@/types';
+import { SafeListing, SafeReservation, SafeUser } from '@/types';
 import useLoginModal from '@/hooks/useLoginModal';
 import categories from '@/constants/categories';
 import Container from '@/components/shared/Container';
@@ -24,7 +23,7 @@ const initialDateRange = {
 };
 
 interface ListingClientProps {
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
   listing: SafeListing & {
     user: SafeUser;
   };
@@ -70,7 +69,7 @@ const ListingClient = ({
 				totalPrice,
 				startDate: dateRange.startDate,
 				endDate: dateRange.endDate,
-				listingId: listing.id,
+				listingId: listing?.id,
 			})
 				.then(() => {
 					toast.success('Listing reserved!');
@@ -85,7 +84,7 @@ const ListingClient = ({
 					setIsLoading(false);
 				});
 		},
-		[currentUser, dateRange.endDate, dateRange.startDate, listing.id, loginModal, router, totalPrice],
+		[currentUser, dateRange.endDate, dateRange.startDate, listing?.id, loginModal, router, totalPrice],
 	);
 	
 	useEffect(() => {
