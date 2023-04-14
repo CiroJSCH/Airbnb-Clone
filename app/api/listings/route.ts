@@ -3,13 +3,17 @@ import { NextResponse } from 'next/server';
 import prisma from '@/libs/prismadb';
 import { getCurrentUser } from '@/actions/getCurrentUser';
 
-export const POST = async (request: Request) => {
+export async function POST(
+	request: Request, 
+) {
 	const currentUser = await getCurrentUser();
 
-	if (!currentUser) return NextResponse.error();
+	if (!currentUser) {
+		return NextResponse.error();
+	}
 
 	const body = await request.json();
-	const {
+	const { 
 		title,
 		description,
 		imageSrc,
@@ -37,4 +41,4 @@ export const POST = async (request: Request) => {
 	});
 
 	return NextResponse.json(listing);
-};
+}
